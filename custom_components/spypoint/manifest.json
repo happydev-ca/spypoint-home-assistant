@@ -7,5 +7,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/happydev-ca/spypoint-home-assistant/issues",
   "requirements": ["spypoint-api>=0.0.4"],
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
