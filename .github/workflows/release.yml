@@ -1,0 +1,30 @@
+name: "Release"
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions: {}
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Zip the integration directory
+        shell: "bash"
+        run: |
+          cd "${{ github.workspace }}/custom_components/spypoint"
+          zip spypoint.zip -r ./
+
+      - name: Upload the zip file to the release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ github.workspace }}/custom_components/spypoint/spypoint.zip
+          generate_release_notes: true

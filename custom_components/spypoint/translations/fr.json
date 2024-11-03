@@ -1,0 +1,22 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Caméras Spypoint",
+        "description": "Connectez-vous à votre compte Spypoint pour accéder à vos caméras",
+        "data": {
+          "password": "Mot de passe"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Compte Spypoint déjà configuré",
+      "reauth_successful": "Réauthentification réussie"
+    },
+    "error": {
+      "cannot_connect": "Échec de connexion",
+      "invalid_auth": "Échec d'authentification",
+      "unknown": "Erreur inattendue"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Spypoint",
+  "render_readme": true,
+  "country": ["CA", "US"],
+  "homeassistant": "2024.10.4"
+}

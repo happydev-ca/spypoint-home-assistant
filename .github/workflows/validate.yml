@@ -1,0 +1,28 @@
+name: Validate
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  hacs:
+    runs-on: "ubuntu-latest"
+    name: HACS
+    steps:
+      - name: Check
+        uses: "actions/checkout@v4"
+
+      - name: Validate
+        uses: "hacs/action@main"
+        with:
+          category: "integration"
+
+  hassfest:
+    runs-on: "ubuntu-latest"
+    name: Hassfest
+    steps:
+      - name: Check out
+        uses: "actions/checkout@v4"
+
+      - name: Validate
+        uses: "home-assistant/actions/hassfest@master"

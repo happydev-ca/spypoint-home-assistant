@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Spypoint cameras",
+        "description": "Connect to your Spypoint account to access your cameras",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Spypoint account is already configured",
+      "reauth_successful": "Re-authentication successful"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "domain": "spypoint",
+  "name": "Spypoint",
+  "codeowners": ["@francoisperron"],
+  "config_flow": true,
+  "documentation": "https://github.com/happydev-ca/spypoint-home-assistant",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/happydev-ca/spypoint-home-assistant/issues",
+  "requirements": ["spypoint-api>=0.0.4"],
+  "version": "0.0.1"
+}
