@@ -15,9 +15,7 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Check lint
         run: ruff check . --output-format=github
