@@ -6,5 +6,4 @@ aiohttp~=3.10.8
 
 # dev
 coverage==7.6.3
-pip~=24.3.1
 ruff==0.7.0

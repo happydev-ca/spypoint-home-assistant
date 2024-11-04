@@ -1,4 +1,4 @@
-[![Test](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/test.yml/badge.svg)](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/test.yml)
+[![Release](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/release.yml/badge.svg)](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/release.yml)
 [![Validate](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/validate.yml/badge.svg)](https://github.com/happydev-ca/spypoint-home-assistant/actions/workflows/validate.yml)
 
 # Spypoint Custom Integration for Home Assistant
