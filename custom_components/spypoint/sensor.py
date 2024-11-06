@@ -24,6 +24,7 @@ async def async_setup_entry(hass, entry, async_add_devices) -> None:
         sensors.append(SignalSensor(coordinator, camera))
         sensors.append(TemperatureSensor(coordinator, camera))
         sensors.append(BatterySensor(coordinator, camera))
+        sensors.append(BatteryTypeSensor(coordinator, camera))
         sensors.append(MemorySensor(coordinator, camera))
         sensors.append(OnlineSensor(coordinator, camera))
         sensors.append(LastUpdateSensor(coordinator, camera))
@@ -95,6 +96,17 @@ class BatterySensor(SpypointCameraDevice, SensorEntity):
         return self._camera.battery
 
 
+class BatteryTypeSensor(SpypointCameraDevice, SensorEntity):
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    def __init__(self, coordinator: SpypointCoordinator, camera: Camera) -> None:
+        super().__init__(coordinator, camera, 'Battery Type')
+
+    @property
+    def native_value(self):
+        return self._camera.battery_type
+
+
 class MemorySensor(SpypointCameraDevice, SensorEntity):
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_entity_category = EntityCategory.DIAGNOSTIC
@@ -131,6 +143,7 @@ class OnlineSensor(SpypointCameraDevice, SensorEntity):
         if self._camera.is_online:
             return 'Online'
         return 'Offline'
+
 
 class NotificationsSensor(SpypointCameraDevice, SensorEntity):
     _attr_entity_category = EntityCategory.DIAGNOSTIC
