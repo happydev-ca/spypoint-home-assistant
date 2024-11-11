@@ -1,8 +1,6 @@
 """
 Spypoint cameras
 """
-from datetime import UTC
-
 from homeassistant.components.sensor import SensorEntity, SensorDeviceClass, SensorStateClass
 from homeassistant.const import EntityCategory, PERCENTAGE, UnitOfTemperature
 from homeassistant.core import callback
@@ -128,7 +126,7 @@ class LastUpdateSensor(SpypointCameraDevice, SensorEntity):
 
     @property
     def native_value(self):
-        return self._camera.last_update_time.replace(tzinfo=UTC)
+        return self._camera.last_update_time
 
 
 class OnlineSensor(SpypointCameraDevice, SensorEntity):

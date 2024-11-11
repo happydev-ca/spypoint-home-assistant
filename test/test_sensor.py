@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, UTC
+from datetime import datetime
 from unittest import IsolatedAsyncioTestCase
 from unittest.mock import Mock
 
@@ -23,7 +23,7 @@ class TestSensorCreation(IsolatedAsyncioTestCase):
         self.coordinator = Mock(DataUpdateCoordinator)
         self.camera = Camera(id="id", name="Test", model="model",
                              modem_firmware="modem_firmware", camera_firmware="camera_firmware",
-                             last_update_time=datetime.now().replace(tzinfo=UTC) - timedelta(hours=10, minutes=0, seconds=0),
+                             last_update_time=datetime.now().astimezone(),
                              signal=100, temperature=20, battery=50, battery_type="12V", memory=45)
         self.coordinator.data = {'123': self.camera}
         hass = Mock(HomeAssistant)
