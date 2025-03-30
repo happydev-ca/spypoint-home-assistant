@@ -32,9 +32,7 @@ class TestSensorCreation(IsolatedAsyncioTestCase):
         hass.data = {DOMAIN: {entry.entry_id: self.coordinator}}
 
         async_add_devices = Mock()
-
         await async_setup_entry(hass, entry, async_add_devices)
-
         async_add_devices.assert_called_once()
 
         self.sensors = async_add_devices.call_args.args[0]
