@@ -1,10 +1,10 @@
 # prod
-homeassistant~=2024.10.4
-spypoint-api~=0.1.2
+homeassistant~=2024.12.5
+spypoint-api~=0.2.1
 voluptuous~=0.15.2
-aiohttp~=3.10.8
+aiohttp~=3.11.10
 
 # dev
-coverage==7.6.4
-pip==24.3.1
-ruff==0.7.2
+coverage==7.7.1
+pip==25.0.1
+ruff==0.11.2

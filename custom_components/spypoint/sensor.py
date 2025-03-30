@@ -27,6 +27,8 @@ async def async_setup_entry(hass, entry, async_add_devices) -> None:
         sensors.append(OnlineSensor(coordinator, camera))
         sensors.append(LastUpdateSensor(coordinator, camera))
         sensors.append(NotificationsSensor(coordinator, camera))
+        if camera.owner is not None:
+            sensors.append(OwnerSensor(coordinator, camera))
 
     async_add_devices(sensors)
 
@@ -154,3 +156,14 @@ class NotificationsSensor(SpypointCameraDevice, SensorEntity):
         if self._camera.notifications is None or len(self._camera.notifications) == 0:
             return "None"
         return ", ".join(self._camera.notifications)
+
+
+class OwnerSensor(SpypointCameraDevice, SensorEntity):
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    def __init__(self, coordinator: SpypointCoordinator, camera: Camera) -> None:
+        super().__init__(coordinator, camera, 'Owner')
+
+    @property
+    def native_value(self):
+        return self._camera.owner

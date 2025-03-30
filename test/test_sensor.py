@@ -12,7 +12,8 @@ from spypointapi import Camera
 
 from custom_components.spypoint import DOMAIN
 from custom_components.spypoint.const import MANUFACTURER
-from custom_components.spypoint.sensor import async_setup_entry, SignalSensor, TemperatureSensor, BatterySensor, MemorySensor, LastUpdateSensor, OnlineSensor, NotificationsSensor, BatteryTypeSensor
+from custom_components.spypoint.sensor import async_setup_entry, SignalSensor, TemperatureSensor, BatterySensor, \
+    MemorySensor, LastUpdateSensor, OnlineSensor, NotificationsSensor, BatteryTypeSensor, OwnerSensor
 
 
 class TestSensorCreation(IsolatedAsyncioTestCase):
@@ -24,7 +25,8 @@ class TestSensorCreation(IsolatedAsyncioTestCase):
         self.camera = Camera(id="id", name="Test", model="model",
                              modem_firmware="modem_firmware", camera_firmware="camera_firmware",
                              last_update_time=datetime.now().astimezone(),
-                             signal=100, temperature=20, battery=50, battery_type="12V", memory=45)
+                             signal=100, temperature=20, battery=50, battery_type="12V", memory=45,
+                             owner='Dude')
         self.coordinator.data = {'123': self.camera}
         hass = Mock(HomeAssistant)
         hass.data = {DOMAIN: {entry.entry_id: self.coordinator}}
@@ -38,7 +40,7 @@ class TestSensorCreation(IsolatedAsyncioTestCase):
         self.sensors = async_add_devices.call_args.args[0]
 
     async def test_add_sensors_on_setup(self):
-        self.assertEqual(len(self.sensors), 8)
+        self.assertEqual(len(self.sensors), 9)
 
     def test_signal_sensor_created(self):
         self.assert_sensor_created(type=SignalSensor,
@@ -97,6 +99,12 @@ class TestSensorCreation(IsolatedAsyncioTestCase):
                                    name='Notifications',
                                    entity_category=EntityCategory.DIAGNOSTIC,
                                    value='None')
+
+    def test_owner_sensor_created(self):
+        self.assert_sensor_created(type=OwnerSensor,
+                                   name='Owner',
+                                   entity_category=EntityCategory.DIAGNOSTIC,
+                                   value='Dude')
 
     def assert_sensor_created(self, type, name, state_class=None, device_class=None, unit=None, precision=None, options=None, value=None, entity_category=None):
         sensor = next(s for s in self.sensors if isinstance(s, type))
