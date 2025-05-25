@@ -1,6 +1,6 @@
-.PHONY : install test coverage release
+.PHONY : venv test coverage release
 
-install:
+venv:
 	python3 -m venv .venv && \
 	source .venv/bin/activate && \
 	pip install -r requirements.txt

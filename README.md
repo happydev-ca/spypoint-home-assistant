@@ -55,7 +55,8 @@ The following sensors are created for each camera:
 ### Test locally
 
 ```shell
-make install
+make venv
+source .venv/bin/activate
 make test
 ```
 
