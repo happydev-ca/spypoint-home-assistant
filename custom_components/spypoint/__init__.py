@@ -17,7 +17,7 @@ PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.DEVICE_TRACKER]
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     spypoint_api = SpypointApi(entry.data[CONF_USERNAME], entry.data[CONF_PASSWORD], async_get_clientsession(hass))
-    spypoint_coordinator = SpypointCoordinator(hass, spypoint_api)
+    spypoint_coordinator = SpypointCoordinator(hass, spypoint_api, entry)
 
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = spypoint_coordinator

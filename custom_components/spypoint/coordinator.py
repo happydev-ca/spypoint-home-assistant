@@ -14,8 +14,14 @@ from .const import DOMAIN, LOGGER
 class SpypointCoordinator(DataUpdateCoordinator):
     config_entry: ConfigEntry
 
-    def __init__(self, hass: HomeAssistant, api: SpypointApi) -> None:
-        super().__init__(hass=hass, logger=LOGGER, name=DOMAIN, update_interval=timedelta(seconds=60))
+    def __init__(self, hass: HomeAssistant, api: SpypointApi, entry: ConfigEntry) -> None:
+        super().__init__(
+            hass=hass,
+            logger=LOGGER,
+            name=DOMAIN,
+            update_interval=timedelta(seconds=60),
+            config_entry=entry,
+        )
         self.api = api
 
     async def _async_update_data(self) -> dict[str, Camera]:

@@ -2,7 +2,7 @@ from unittest import IsolatedAsyncioTestCase
 from unittest.mock import patch, AsyncMock, MagicMock
 
 from aiohttp import ClientSession
-from homeassistant.config_entries import ConfigEntry, ConfigEntries
+from homeassistant.config_entries import ConfigEntry, ConfigEntries, ConfigEntryState
 from homeassistant.const import CONF_USERNAME, CONF_PASSWORD
 from homeassistant.core import HomeAssistant
 
@@ -73,6 +73,7 @@ class AsyncSetupEntryTest(IsolatedAsyncioTestCase):
         entry = AsyncMock(ConfigEntry)
         entry.entry_id = id
         entry.data = {CONF_USERNAME: username, CONF_PASSWORD: password}
+        entry.state = ConfigEntryState.SETUP_IN_PROGRESS
         return entry
 
     @staticmethod
