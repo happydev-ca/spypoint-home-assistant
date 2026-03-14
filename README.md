@@ -3,7 +3,7 @@
 
 # Spypoint Custom Integration for Home Assistant
 
-Use to monitor your Spypoint cameras.
+Monitor your Spypoint cameras in Home Assistant.
 
 ## Installation
 
