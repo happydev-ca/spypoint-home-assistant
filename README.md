@@ -47,8 +47,11 @@ The following sensors are created for each camera:
 
 <img alt="Sensors" height="" src="./.img/sensors.png" width="344"/>
 
-
 <img alt="Diagnostic" src="./.img/diagnostic.png" width="344"/>
+
+## Related Projects
+
+- [spypoint-ha-kiosk](https://github.com/T3flon/spypoint-ha-kiosk) — this integration exposes sensors only (battery, signal, status, etc.), not the actual photos. spypoint-ha-kiosk is a companion project that downloads your camera's photos and displays them as a kiosk-style dashboard in Home Assistant, with a push notification whenever a new photo arrives.
 
 ## Development
 
